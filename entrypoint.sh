@@ -27,5 +27,7 @@ python3 /hub-mirror/hubmirror.py --src "${INPUT_SRC}" --dst "${INPUT_DST}" \
 --timeout  "${INPUT_TIMEOUT}" \
 --mappings  "${INPUT_MAPPINGS}"
 
+ssh-agent -a /tmp/ssh_agent.sock > /dev/null
+ssh-add - <<< "${INPUT_SSH_PRIVATE_KEY}"
 # Skip original code
 exit $?
