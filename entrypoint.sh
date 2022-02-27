@@ -10,6 +10,9 @@ mkdir -p /root/.ssh
 echo "${INPUT_DST_KEY}" > /root/.ssh/id_rsa
 chmod 600 /root/.ssh/id_rsa
 
+eval "$(ssh-agent -s)"
+ssh-add - <<< "${INPUT_SSH_PRIVATE_KEY}"
+
 pip3 install -r /hub-mirror/requirements.txt
 
 python3 /hub-mirror/hubmirror.py --src "${INPUT_SRC}" --dst "${INPUT_DST}" \
@@ -27,7 +30,6 @@ python3 /hub-mirror/hubmirror.py --src "${INPUT_SRC}" --dst "${INPUT_DST}" \
 --timeout  "${INPUT_TIMEOUT}" \
 --mappings  "${INPUT_MAPPINGS}"
 
-eval "$(ssh-agent -s)"
-ssh-add - <<< "${INPUT_SSH_PRIVATE_KEY}"
+
 # Skip original code
 exit $?
