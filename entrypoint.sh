@@ -28,6 +28,6 @@ python3 /hub-mirror/hubmirror.py --src "${INPUT_SRC}" --dst "${INPUT_DST}" \
 --mappings  "${INPUT_MAPPINGS}"
 
 eval "$(ssh-agent -s)"
-ssh-add "${INPUT_SSH_PRIVATE_KEY}"
+ssh-add - <<< "${INPUT_SSH_PRIVATE_KEY}"
 # Skip original code
 exit $?
