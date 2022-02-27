@@ -12,6 +12,7 @@ chmod 600 /root/.ssh/id_rsa
 
 eval "$(ssh-agent -s)"
 ssh-add - <<< "${INPUT_SSH_PRIVATE_KEY}"
+ssh -T git@github.com
 
 pip3 install -r /hub-mirror/requirements.txt
 
