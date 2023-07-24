@@ -56,6 +56,9 @@ inputs:
   ssh_private_key:
     description: "src ssh_private_key"
     default: ''
+  lfs:
+    description: "Enable Git LFS support."
+    default: false
 runs:
   using: "docker"
   image: "Dockerfile"
@@ -76,4 +79,5 @@ runs:
     - ${{ inputs.debug}}
     - ${{ inputs.timeout}}
     - ${{ inputs.mappings}}
+    - ${{ inputs.lfs }}
     - ${{ inputs.ssh_private_key}}
