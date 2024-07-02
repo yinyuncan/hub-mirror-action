@@ -10,6 +10,9 @@ mkdir -p /root/.ssh
 echo "${INPUT_DST_KEY}" > /root/.ssh/id_rsa
 chmod 600 /root/.ssh/id_rsa
 
+python3 -m venv /hub-mirror/venv
+source /hub-mirror/venv/bin/activate
+
 eval "$(ssh-agent -s)"
 ssh-add - <<< "${INPUT_SSH_PRIVATE_KEY}"
 ssh -T git@github.com
